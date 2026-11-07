@@ -1,6 +1,6 @@
 # AI Guide Hub
 
-把多套源码对齐的 AI 应用开发教程收在一张地图上。当前收录：
+把几套源码对齐的 AI 应用开发教程收在一起。当前包含：
 
 - Spring AI 2.0.2
 - LangChain4j 1.23.0
@@ -10,9 +10,9 @@
 
 后续新增教程只需要改 `hub/assets/data.js` 并重跑搜索索引，不需要改页面结构。
 
-Hub 只做**选型、学习路径、主题索引与跨站搜索**，不复制正文。各教程仍然独立仓库、独立部署、独立版本。
+Hub 只做**选型、学习路线、主题索引与跨站搜索**，不复制正文。教程正文仍在各自仓库维护。
 
-> 站点链接默认假设各教程仓库已开启 GitHub Pages。如果某个链接 404，先到对应仓库的 README 确认 Pages 状态；`hub/assets/data.js` 里的 `site` 字段是唯一需要改的地方。
+> `hub/assets/data.js` 里的 `site` 字段在聚合构建时会被改写成 `/spring-ai/` 等站内路径，正式部署不需要手工改。
 
 ## 本地看站
 
@@ -41,13 +41,13 @@ node tools/build-site.cjs
 1. 拉取五套教程的固定 commit；
 2. 把 Hub 放到 `/`，教程分别放到 `/spring-ai/`、`/langchain4j/`、`/agentscope-py/`、`/agentscope-java/`、`/langgraph/`；
 3. 把 `data.js` 与搜索索引改写成站内路径；
-4. 给每个教程页注入「← 教程库」、广告位和公共样式。
+4. 给每个教程页注入「← 全部教程」、广告位和公共样式。
 
 把 `dist/` 上传到阿里云 OSS / 任意静态服务器即可。详见 `DEPLOY.md`。
 
 ## 更新搜索索引
 
-Hub 的搜索索引从教程库各自的 `nav.js` 生成。默认假设各教程仓库是同级目录：
+Hub 的搜索索引从各教程的 `nav.js` 生成。默认假设各教程仓库是同级目录：
 
 ```text
 aidemo/
@@ -75,14 +75,14 @@ node tools/check-site.cjs
 
 ```text
 hub/
-├── index.html          首页：教程库、路径、速查
+├── index.html          首页：教程、路线、速查
 ├── compare.html        框架对照与选型
-├── topics.html         主题地图
-├── projects.html       完整项目与 samples
+├── topics.html         主题索引
+├── projects.html       完整项目与示例
 ├── about.html          版本、来源与阅读方式
 ├── 404.html
 └── assets/
-    ├── data.js         教程库、路径、主题、项目数据
+    ├── data.js         教程、路线、主题、项目数据
     ├── search-index.js 跨站搜索索引（生成）
     ├── hub.css         深色 charcoal + lime 主题
     ├── hub-embed.css   注入教程页的返回链接/广告位样式

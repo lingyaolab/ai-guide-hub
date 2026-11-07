@@ -162,7 +162,7 @@ function injectCommon(g) {
         );
         s = s.replace(
           "</body>",
-          '  <a class="hub-back" href="/">← 教程库</a>\n' +
+          '  <a class="hub-back" href="/">← 全部教程</a>\n' +
             '  <div class="ad-slot" data-ad-slot="article-bottom"></div>\n' +
             '  <script src="/assets/ads.js" defer></script>\n' +
             "  </body>"

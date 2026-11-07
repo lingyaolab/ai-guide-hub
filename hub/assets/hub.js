@@ -76,7 +76,7 @@
       card.appendChild(best);
       var links = el("div", "guide-links");
       var read = el("a", null, "开始阅读 →"); read.href = g.site;
-      var repo = el("a", "muted", "GitHub"); repo.href = g.repo;
+      var repo = el("a", "muted", "查看源码"); repo.href = g.repo;
       links.appendChild(read); links.appendChild(repo);
       card.appendChild(links);
       grid.appendChild(card);
@@ -156,7 +156,7 @@
       left.appendChild(el("div", "project-guide", g.name + " · 第 " + p.chapter + " 章"));
       row.appendChild(left);
       row.appendChild(el("p", null, p.desc));
-      var a = el("a", "btn", "打开案例");
+      var a = el("a", "btn", "打开项目");
       a.href = g.site + "chapters/" + p.chapter + "-";
       var hit = INDEX.filter(function (e) {
         return e.g === p.guide && e.t.indexOf(p.chapter + " ") === 0;
@@ -164,6 +164,25 @@
       if (hit) a.href = hit.u;
       row.appendChild(a);
       projects.appendChild(row);
+    });
+  }
+
+  // site stats
+  var statNodes = document.querySelectorAll("[data-stat]");
+  if (statNodes.length) {
+    var pageSet = {};
+    INDEX.forEach(function (e) {
+      pageSet[e.u.split("#")[0]] = true;
+    });
+    var statValues = {
+      guides: GUIDES.length,
+      pages: Object.keys(pageSet).length,
+      sections: INDEX.length,
+      projects: PROJECTS.length,
+    };
+    statNodes.forEach(function (node) {
+      var value = statValues[node.getAttribute("data-stat")];
+      if (value != null) node.textContent = value.toLocaleString("zh-CN");
     });
   }
 

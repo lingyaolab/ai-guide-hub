@@ -56,7 +56,7 @@ GitHub Pages 只建议做预览。正式站、备案与广告放阿里云。
 `tools/build-site.cjs` 会给每个教程页注入：
 
 ```html
-<a class="hub-back" href="/">← 教程库</a>
+<a class="hub-back" href="/">← 全部教程</a>
 <div class="ad-slot" data-ad-slot="article-bottom"></div>
 <script src="/assets/ads.js" defer></script>
 ```

@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL、服务化与选型问题。" />
+    <meta name="description" content="对比 Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL 和服务化，帮你选一套合适的框架。" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="AI Guide Hub" />
-    <meta property="og:title" content="框架对照：怎么选一套适合你的 AI 开发框架 · AI Guide Hub" />
-    <meta property="og:description" content="Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL、服务化与选型问题。" />
-    <title>框架对照：怎么选一套适合你的 AI 开发框架 · AI Guide Hub</title>
+    <meta property="og:title" content="框架对照：选型与能力对比 · AI Guide Hub" />
+    <meta property="og:description" content="对比 Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL 和服务化，帮你选一套合适的框架。" />
+    <title>框架对照：选型与能力对比 · AI Guide Hub</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="assets/hub.css" />
   </head>
@@ -19,12 +19,12 @@
       <div class="header-inner">
         <a class="brand" href="index.html">
           <span class="brand-mark">AI</span>
-          <span>Guide Hub<br /><small>源码对齐的 AI 开发教程库</small></span>
+          <span>Guide Hub<br /><small>AI 应用开发教程</small></span>
         </a>
         <nav class="nav" id="site-nav" aria-label="主导航">
           <a data-nav="home" href="index.html">首页</a>
           <a data-nav="compare" href="compare.html">框架对照</a>
-          <a data-nav="topics" href="topics.html">主题地图</a>
+          <a data-nav="topics" href="topics.html">主题索引</a>
           <a data-nav="projects" href="projects.html">项目</a>
           <a data-nav="about" href="about.html">关于</a>
         </nav>
@@ -39,7 +39,7 @@
       <section class="section">
         <div class="section-head">
           <h1>框架对照</h1>
-          <p>先看项目缺哪一层，再看具体框架。</p>
+          <p>先看项目缺哪一层，再挑框架。</p>
         </div>
         <div class="table-wrap">
           <table>
@@ -61,38 +61,38 @@
       </section>
 
       <section class="section">
-        <div class="section-head"><h2>三个选型问题</h2><p>答完基本就知道先看哪套。</p></div>
+        <div class="section-head"><h2>三个选型问题</h2><p>答完基本能确定先读哪一套。</p></div>
         <div class="path-grid">
           <article class="path-card">
             <h3>1. 你的服务已经在 Spring 里吗？</h3>
             <div class="path-note">是 → 先看 Spring AI；不是 → 继续下一问。</div>
-            <p style="color:var(--muted);font-size:14px">Spring AI 的优势是自动装配与 Advisor；代价是框架绑定。</p>
+            <p style="color:var(--muted);font-size:14px">Spring AI 的优势是自动装配与 Advisor，代价是绑定 Spring 生态。</p>
           </article>
           <article class="path-card">
             <h3>2. 你需要显式状态与暂停恢复吗？</h3>
-            <div class="path-note">是 → LangGraph 或 AgentScope 的 Session/State；不是 → 普通 Chain/Agent 就够。</div>
-            <p style="color:var(--muted);font-size:14px">只要工具循环时，不要为了「图」而图。</p>
+            <div class="path-note">需要 → LangGraph 或 AgentScope 的 State / Session；不需要 → 普通 Chain 或 Agent 就够了。</div>
+            <p style="color:var(--muted);font-size:14px">如果只需要工具循环，普通 Agent 就够了，不必上状态图。</p>
           </article>
           <article class="path-card">
-            <h3>3. 你是 Java 团队还是 Python 团队？</h3>
+            <h3>3. 团队主要用 Java 还是 Python？</h3>
             <div class="path-note">Java 平台 → AgentScope Java；Python 多 Agent → AgentScope Python。</div>
-            <p style="color:var(--muted);font-size:14px">语言之外，还要看部署、观测与团队已有运维体系。</p>
+            <p style="color:var(--muted);font-size:14px">语言之外，还要看部署、观测和团队现有的运维体系。</p>
           </article>
         </div>
       </section>
 
       <section class="section">
         <div class="callout">
-          <b>不要按「功能最多」选。</b>
-          先写清楚你需要的是 ChatClient、工具循环、RAG、状态恢复还是服务托管；
-          再把需求映射到上表的那一行。不同框架可以互相借鉴，但一个项目里不要同时引入多套运行时。
+          <b>选型时先看项目缺哪一层，而不是比功能多少。</b>
+          先写清楚你需要的是 ChatClient、工具循环、RAG、状态恢复还是服务托管，
+          再对照上表找到合适的一行。不同框架可以互相借鉴，但一个项目里最好只保留一套运行时。
         </div>
       </section>
 
     </main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>AI 应用开发教程导航 · 从选型到项目</span>
+        <span>AI 应用开发教程 · 从选型到项目</span>
         <span>
           <a href="https://github.com/lingyaolab">lingyaolab</a> ·
           <a href="about.html">版本与来源</a> ·

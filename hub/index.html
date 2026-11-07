@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="把 Spring AI、LangChain4j、AgentScope Python/Java、LangGraph 等 AI 开发教程按语言与场景整理：选型、学习路径、主题索引与完整案例。" />
+    <meta name="description" content="Spring AI、LangChain4j、AgentScope Python/Java、LangGraph 的完整教程：从最小示例讲到完整项目，附源码出处与可运行示例。" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="AI Guide Hub" />
-    <meta property="og:title" content="AI 开发教程导航 · AI Guide Hub" />
-    <meta property="og:description" content="把 Spring AI、LangChain4j、AgentScope Python/Java、LangGraph 等 AI 开发教程按语言与场景整理：选型、学习路径、主题索引与完整案例。" />
-    <title>AI 开发教程导航 · AI Guide Hub</title>
+    <meta property="og:title" content="AI 应用开发教程 · AI Guide Hub" />
+    <meta property="og:description" content="Spring AI、LangChain4j、AgentScope Python/Java、LangGraph 的完整教程：从最小示例讲到完整项目，附源码出处与可运行示例。" />
+    <title>AI 应用开发教程 · AI Guide Hub</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="assets/hub.css" />
   </head>
@@ -19,12 +19,12 @@
       <div class="header-inner">
         <a class="brand" href="index.html">
           <span class="brand-mark">AI</span>
-          <span>Guide Hub<br /><small>源码对齐的 AI 开发教程库</small></span>
+          <span>Guide Hub<br /><small>AI 应用开发教程</small></span>
         </a>
         <nav class="nav" id="site-nav" aria-label="主导航">
           <a data-nav="home" href="index.html">首页</a>
           <a data-nav="compare" href="compare.html">框架对照</a>
-          <a data-nav="topics" href="topics.html">主题地图</a>
+          <a data-nav="topics" href="topics.html">主题索引</a>
           <a data-nav="projects" href="projects.html">项目</a>
           <a data-nav="about" href="about.html">关于</a>
         </nav>
@@ -38,51 +38,51 @@
     <main id="main">
       <section class="hero">
         <div>
-          <div class="eyebrow">AI APPLICATION DEVELOPMENT · 2026</div>
-          <h1>教程库，<br /><span>一张 AI 开发地图</span></h1>
+          <div class="eyebrow">AI 应用开发 · 源码对齐</div>
+          <h1>从 Spring AI 到 LangGraph，<br /><span>一套一套学</span></h1>
           <p>
-            从框架选型到可运行项目，按语言与使用场景把几套主流 AI 开发教程组织在一起。
-            你可以先决定学哪一套，再沿一条路线读下去。
+            每套教程都从最小示例开始，一直写到能跑通的完整项目。
+            先选一门语言和场景，再按章节往下读。
           </p>
           <div class="hero-actions">
-            <a class="btn primary" href="#guides">浏览全部教程 →</a>
-            <a class="btn" href="compare.html">先看框架对照</a>
-            <a class="btn" href="projects.html">直接看项目</a>
+            <a class="btn primary" href="#guides">进入教程 →</a>
+            <a class="btn" href="compare.html">框架对照</a>
+            <a class="btn" href="projects.html">完整项目</a>
           </div>
         </div>
         <aside class="matrix" aria-label="版本矩阵">
-          <div class="matrix-head"><span>VERSION MATRIX</span><span>CURRENT GUIDES / GROWING</span></div>
+          <div class="matrix-head"><span>版本一览</span><span>从任意一套开始</span></div>
           <div id="matrix-rows"></div>
         </aside>
       </section>
 
       <section class="stats" aria-label="站点统计">
-        <div class="stat"><b>5</b><span>套已收录</span></div>
-        <div class="stat"><b>167+</b><span>内容页</span></div>
-        <div class="stat"><b>4,700+</b><span>源码出处</span></div>
-        <div class="stat"><b>5</b><span>个可运行 samples</span></div>
+        <div class="stat"><b data-stat="guides">—</b><span>套教程</span></div>
+        <div class="stat"><b data-stat="pages">—</b><span>个可搜索页面</span></div>
+        <div class="stat"><b data-stat="sections">—</b><span>条小节索引</span></div>
+        <div class="stat"><b data-stat="projects">—</b><span>个完整项目</span></div>
       </section>
 
       <section class="section" id="guides">
         <div class="section-head">
-          <h2>教程库</h2>
-          <p>按语言与使用场景整理，方便快速定位。</p>
+          <h2>教程</h2>
+          <p>按语言和场景挑一套，先读起来。</p>
         </div>
         <div class="guide-grid" id="guide-grid"></div>
       </section>
 
       <section class="section" id="paths">
         <div class="section-head">
-          <h2>三条学习路径</h2>
-          <p>先选一条，再按顺序读；不要所有教程同时开。</p>
+          <h2>学习路线</h2>
+          <p>建议一次只跟一条路线，学完再换。</p>
         </div>
         <div class="path-grid" id="path-grid"></div>
       </section>
 
       <section class="section" id="quick-compare">
         <div class="section-head">
-          <h2>先看一张表</h2>
-          <p>详细对照与选型问题见 <a href="compare.html">框架对照</a>。</p>
+          <h2>快速对照</h2>
+          <p>更细的对比在 <a href="compare.html">框架对照</a>。</p>
         </div>
         <div class="table-wrap">
           <table>
@@ -100,23 +100,23 @@
 
       <section class="section" id="topics">
         <div class="section-head">
-          <h2>按主题横着读</h2>
-          <p>同一个能力，在这些框架里分别怎么实现。完整矩阵见 <a href="topics.html">主题地图</a>。</p>
+          <h2>按主题找章节</h2>
+          <p>想查某个能力在哪一章，从这里进。完整索引见 <a href="topics.html">主题索引</a>。</p>
         </div>
         <div class="topic-grid" id="topic-grid"></div>
       </section>
 
       <section class="section" id="projects">
         <div class="section-head">
-          <h2>完整案例</h2>
-          <p>每套教程最后都有一个完整项目，配套 samples 可直接运行。见 <a href="projects.html">项目页</a>。</p>
+          <h2>完整项目</h2>
+          <p>每套教程都以一个完整项目收尾，配套示例可以直接跑。见 <a href="projects.html">项目页</a>。</p>
         </div>
         <div class="project-list" id="project-list"></div>
       </section>
 
       <section class="section">
         <div class="callout">
-          <b>先选一条路线，再开始读。</b>
+          <b>建议先选一条路线再开始。</b>
           每套教程都从最小示例开始，逐步走到完整项目；遇到问题先看对应章节的「陷阱与窍门」。
         </div>
       </section>
@@ -124,7 +124,7 @@
     </main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>AI 应用开发教程导航 · 从选型到项目</span>
+        <span>AI 应用开发教程 · 从选型到项目</span>
         <span>
           <a href="https://github.com/lingyaolab">lingyaolab</a> ·
           <a href="about.html">版本与来源</a> ·

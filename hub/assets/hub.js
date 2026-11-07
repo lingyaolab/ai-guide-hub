@@ -24,12 +24,19 @@
     else root.setAttribute("data-theme", "light");
   } catch (e) {}
   var themeBtn = document.getElementById("theme-toggle");
+  function syncThemeButton() {
+    if (!themeBtn) return;
+    var dark = root.getAttribute("data-theme") === "dark";
+    themeBtn.setAttribute("aria-pressed", dark ? "true" : "false");
+    themeBtn.setAttribute("aria-label", "切换主题（当前" + (dark ? "深色" : "浅色") + "）");
+  }
   if (themeBtn) {
+    syncThemeButton();
     themeBtn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("hub-theme-v2", next); } catch (e) {}
-      themeBtn.setAttribute("aria-pressed", next === "dark" ? "true" : "false");
+      syncThemeButton();
     });
   }
 
@@ -61,6 +68,7 @@
     GUIDES.forEach(function (g) {
       var card = el("article", "guide-card");
       card.style.setProperty("--accent-guide", g.accent);
+      if (g.accentInk) card.style.setProperty("--accent-guide-ink", g.accentInk);
       card.appendChild(el("div", "guide-top"));
       var top = card.querySelector(".guide-top");
       top.appendChild(el("span", "badge", g.lang));
@@ -192,23 +200,63 @@
   var results = document.getElementById("search-results");
   var openBtn = document.getElementById("search-open");
   var closeBtn = document.getElementById("search-close");
+  var countEl = null;
+
+  function countNode() {
+    if (!countEl && results && results.parentNode) {
+      countEl = el("div", "search-count");
+      countEl.id = "search-count";
+      countEl.setAttribute("role", "status");
+      countEl.setAttribute("aria-live", "polite");
+      results.parentNode.insertBefore(countEl, results);
+    }
+    return countEl;
+  }
 
   function renderResults(q) {
     if (!results) return;
     results.innerHTML = "";
     q = (q || "").trim().toLowerCase();
+    var cn = countNode();
     if (!q) {
+      if (cn) cn.textContent = "";
       results.appendChild(el("div", "search-empty", "输入章节、概念或框架名，例如 checkpoint、HITL、RAG。"));
       return;
     }
-    var hits = INDEX.filter(function (e) {
-      return (e.t + " " + e.s + " " + e.k).toLowerCase().indexOf(q) >= 0;
-    }).slice(0, 24);
-    if (!hits.length) {
+    var terms = q.split(/\s+/).filter(Boolean);
+    var scored = [];
+    for (var i = 0; i < INDEX.length; i++) {
+      var e = INDEX[i];
+      var t = e.t.toLowerCase();
+      var s = e.s.toLowerCase();
+      var k = e.k.toLowerCase();
+      var hay = t + " " + s + " " + k;
+      var ok = true;
+      var score = 0;
+      for (var j = 0; j < terms.length; j++) {
+        var term = terms[j];
+        if (hay.indexOf(term) < 0) { ok = false; break; }
+        if (t === term) score += 100;
+        else if (t.indexOf(term) === 0) score += 45;
+        else if (t.indexOf(term) >= 0) score += 22;
+        if (s.indexOf(term) >= 0) score += 8;
+        if (k.indexOf(term) >= 0) score += 4;
+      }
+      if (ok) scored.push({ e: e, score: score });
+    }
+    scored.forEach(function (item) {
+      var gn = byId[item.e.g] ? byId[item.e.g].name.toLowerCase() : "";
+      if (gn && (gn === q || gn.indexOf(q) >= 0 || q.indexOf(gn) >= 0)) item.score += 40;
+    });
+    scored.sort(function (a, b) { return b.score - a.score; });
+    var total = scored.length;
+    if (cn) cn.textContent = total ? total + " 条结果" + (total > 24 ? "，显示前 24 条" : "") : "没有匹配结果";
+    if (!total) {
       results.appendChild(el("div", "search-empty", "没有匹配结果。试试更短的关键词。"));
       return;
     }
-    hits.forEach(function (e) {
+    scored.slice(0, 24).forEach(function (item) {
+      var e = item.e;
       var a = el("a", "search-item");
       a.href = e.u;
       a.appendChild(el("b", null, e.t + " · " + e.s));
@@ -217,21 +265,36 @@
       results.appendChild(a);
     });
   }
+  var lastFocus = null;
   function openSearch() {
     if (!wrap) return;
+    lastFocus = openBtn || document.activeElement;
     wrap.classList.add("open");
     wrap.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
     if (input) { input.value = ""; input.focus(); renderResults(""); }
   }
   function closeSearch() {
-    if (!wrap) return;
+    if (!wrap || !wrap.classList.contains("open")) return;
     wrap.classList.remove("open");
     wrap.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    var target = lastFocus && lastFocus !== document.body ? lastFocus : openBtn;
+    if (target && target.focus) target.focus();
   }
   if (openBtn) openBtn.addEventListener("click", openSearch);
   if (closeBtn) closeBtn.addEventListener("click", closeSearch);
   if (wrap) {
     wrap.addEventListener("click", function (e) { if (e.target === wrap) closeSearch(); });
+    wrap.addEventListener("keydown", function (e) {
+      if (e.key !== "Tab") return;
+      var focusable = wrap.querySelectorAll('input, a[href], button');
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
   }
   if (input) {
     input.addEventListener("input", function () { renderResults(input.value); });

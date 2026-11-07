@@ -1,9 +1,8 @@
 name: Deploy site
 
 # 发布物：dist/（构建时把 Hub + 五套教程聚合到同一域名下）
+# Pages 未启用时保持手动触发，避免每次 push 都出现 Configure Pages 失败。
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

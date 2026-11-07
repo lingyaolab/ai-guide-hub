@@ -36,7 +36,7 @@ for (const p of pages) {
   const s = fs.readFileSync(path.join(HUB, p), "utf8");
   for (const m of s.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const u = m[1];
-    if (/^(https?:|#|mailto:)/.test(u)) continue;
+    if (/^(https?:|#|mailto:|\/)/.test(u)) continue;
     const target = path.resolve(path.dirname(path.join(HUB, p)), u.split("#")[0].split("?")[0]);
     if (!fs.existsSync(target)) fail("站内链接", p + " -> " + u);
   }

@@ -3,6 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      /* theme-boot */
+      (function () {
+        try {
+          var saved = localStorage.getItem("hub-theme-v2");
+          if (saved === "dark" || saved === "light") document.documentElement.setAttribute("data-theme", saved);
+        } catch (e) {}
+      })();
+    </script>
     <meta name="description" content="按第一次对话、工具、RAG、记忆、HITL、多 Agent、服务化和评测，找到各框架对应的章节。" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
@@ -41,6 +50,17 @@
           <h1>主题索引</h1>
           <p>想查某个能力在哪一章，从这里进。</p>
         </div>
+        <noscript>
+          <div class="callout noscript">
+            <b>浏览器未启用 JavaScript。</b>
+            主题索引需要脚本渲染；可直接进入教程：
+          <a href="/spring-ai/">Spring AI</a> ·
+          <a href="/langchain4j/">LangChain4j</a> ·
+          <a href="/agentscope-py/">AgentScope Python</a> ·
+          <a href="/agentscope-java/">AgentScope Java</a> ·
+          <a href="/langgraph/">LangGraph</a>
+          </div>
+        </noscript>
         <div class="topic-grid" id="topic-grid"></div>
       </section>
       <section class="section">
@@ -63,7 +83,7 @@
     </footer>
     <div class="search-wrap" id="search-wrap" aria-hidden="true">
       <div class="search-box" role="dialog" aria-modal="true" aria-label="跨站搜索">
-        <input id="search-input" type="search" placeholder="搜索章节、概念或框架，例如 checkpoint / HITL / RAG" autocomplete="off" />
+        <input id="search-input" type="search" placeholder="搜索章节、概念或框架，例如 checkpoint / HITL / RAG" aria-label="搜索章节、概念或框架" aria-controls="search-results" autocomplete="off" />
         <div class="search-results" id="search-results"></div>
         <div style="display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:var(--faint);font-size:12px">
           <span>Enter 打开第一个结果 · Esc 关闭</span>

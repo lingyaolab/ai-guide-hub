@@ -9,7 +9,7 @@
   --line-soft: #20262e;
   --ink: #f3f6f9;
   --muted: #9aa6b5;
-  --faint: #6f7b8a;
+  --faint: #7d8998;
   --accent: #a3e635;
   --accent-ink: #101408;
   --cyan: #67e8f9;
@@ -28,7 +28,7 @@ html[data-theme="light"] {
   --line-soft: #e7e8e1;
   --ink: #171a16;
   --muted: #5f675b;
-  --faint: #8a9284;
+  --faint: #646c5f;
   --accent: #4d7c0f;
   --accent-ink: #ffffff;
   --cyan: #0e7490;
@@ -156,6 +156,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 22px 72px; }
 .guide-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; font-size: 13px; font-weight: 700; }
 .guide-links a { color: var(--accent-guide); }
 .guide-links a.muted { color: var(--muted); }
+html[data-theme="light"] .guide-card h3 a:hover,
+html[data-theme="light"] .guide-links a:not(.muted) { color: var(--accent-guide-ink, var(--accent-guide)); }
 
 .path-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .path-card { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 18px; }
@@ -201,6 +203,7 @@ td code, p code, li code { background: var(--panel-2); border: 1px solid var(--l
 .search-box input { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-soft); color: var(--ink); outline: none; }
 .search-box input:focus { border-color: var(--accent); }
 .search-results { margin-top: 10px; max-height: 54vh; overflow: auto; }
+.search-count { color: var(--muted); font-size: 12px; padding: 2px 12px 0; }
 .search-item { display: block; padding: 10px 12px; border-radius: 9px; color: var(--ink); }
 .search-item:hover { background: var(--panel-2); text-decoration: none; }
 .search-item b { font-size: 14px; }

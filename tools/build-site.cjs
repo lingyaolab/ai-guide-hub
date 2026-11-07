@@ -56,6 +56,14 @@ const GUIDES = [
   },
 ];
 
+const GUIDE_NAMES = {
+  "spring-ai": "Spring AI",
+  "langchain4j": "LangChain4j",
+  "agentscope-py": "AgentScope Python",
+  "agentscope-java": "AgentScope Java",
+  "langgraph": "LangGraph",
+};
+
 function sh(cwd, cmd, args) {
   execFileSync(cmd, args, { cwd, stdio: "inherit" });
 }
@@ -145,8 +153,19 @@ function swapSupportImages() {
   fs.writeFileSync(file, s, "utf8");
 }
 
+function escapeAttr(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+let descriptionCount = 0;
+
 function injectCommon(g) {
   const root = path.join(DIST, g.id);
+  const guideName = GUIDE_NAMES[g.id] || g.id;
   let count = 0;
   function walk(dir) {
     for (const name of fs.readdirSync(dir)) {
@@ -155,20 +174,37 @@ function injectCommon(g) {
       if (st.isDirectory()) walk(p);
       else if (name.endsWith(".html")) {
         let s = fs.readFileSync(p, "utf8");
-        if (s.includes("hub-embed.css")) continue;
-        s = s.replace(
-          "</head>",
-          '  <link rel="stylesheet" href="/assets/hub-embed.css" />\n  </head>'
-        );
-        s = s.replace(
-          "</body>",
-          '  <a class="hub-back" href="/">← 全部教程</a>\n' +
-            '  <div class="ad-slot" data-ad-slot="article-bottom"></div>\n' +
-            '  <script src="/assets/ads.js" defer></script>\n' +
-            "  </body>"
-        );
-        fs.writeFileSync(p, s, "utf8");
-        count++;
+        let changed = false;
+        if (!name.endsWith("404.html") && !/<meta\s+name=["']description["']/i.test(s)) {
+          const title = (s.match(/<title>([\s\S]*?)<\/title>/) || [])[1] || "";
+          if (title) {
+            const clean = title.replace(/\s*·\s*[^·]+$/, "").trim() || guideName + " 教程";
+            let desc = "《" + clean + "》" + guideName + " 教程，含源码出处、可运行示例和完整项目。";
+            if (desc.length > 150) desc = desc.slice(0, 147) + "...";
+            s = s.replace(
+              "</head>",
+              '  <meta name="description" content="' + escapeAttr(desc) + '" />\n  </head>'
+            );
+            descriptionCount++;
+            changed = true;
+          }
+        }
+        if (!s.includes("hub-embed.css")) {
+          s = s.replace(
+            "</head>",
+            '  <link rel="stylesheet" href="/assets/hub-embed.css" />\n  </head>'
+          );
+          s = s.replace(
+            "</body>",
+            '  <a class="hub-back" href="/">← 全部教程</a>\n' +
+              '  <div class="ad-slot" data-ad-slot="article-bottom"></div>\n' +
+              '  <script src="/assets/ads.js" defer></script>\n' +
+              "  </body>"
+          );
+          count++;
+          changed = true;
+        }
+        if (changed) fs.writeFileSync(p, s, "utf8");
       }
     }
   }
@@ -198,4 +234,14 @@ swapSupportImages();
 let injected = 0;
 for (const g of mounts) injected += injectCommon(g);
 
-console.log("built dist/ with", mounts.length, "guides,", total, "search entries,", injected, "pages injected");
+console.log(
+  "built dist/ with",
+  mounts.length,
+  "guides,",
+  total,
+  "search entries,",
+  injected,
+  "pages injected,",
+  descriptionCount,
+  "descriptions added"
+);

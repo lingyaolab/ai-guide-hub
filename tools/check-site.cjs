@@ -50,8 +50,8 @@ const guides = sandbox.window.HUB_GUIDES || [];
 const paths = sandbox.window.HUB_PATHS || [];
 const topics = sandbox.window.HUB_TOPICS || [];
 const byId = Object.fromEntries(guides.map((g) => [g.id, g]));
-if (guides.length !== 5) fail("五套教程", String(guides.length));
-else ok("五套教程数据齐全");
+if (guides.length !== 5) fail("教程数据", String(guides.length));
+else ok("教程数据齐全");
 for (const [i, g] of guides.entries()) {
   if (!/^https:\/\//.test(g.site)) fail("site URL", i + " " + g.site);
   if (!/^https:\/\/github\.com\//.test(g.repo)) fail("repo URL", i + " " + g.repo);

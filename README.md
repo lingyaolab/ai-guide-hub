@@ -1,6 +1,6 @@
 # AI Guide Hub
 
-把五套源码对齐的 AI 开发教程放在一张地图上：
+把多套源码对齐的 AI 应用开发教程收在一张地图上。当前收录：
 
 - Spring AI 2.0.2
 - LangChain4j 1.23.0
@@ -8,9 +8,11 @@
 - AgentScope Java 2.0.4
 - LangGraph 1.2.20
 
-Hub 只做**选型、学习路径、主题索引与跨站搜索**，不复制正文。五套教程仍然各自独立仓库、独立部署、独立版本。
+后续新增教程只需要改 `hub/assets/data.js` 并重跑搜索索引，不需要改页面结构。
 
-> 站点链接默认假设五个仓库已开启 GitHub Pages。如果某个链接 404，先到对应仓库的 README 确认 Pages 状态；`hub/assets/data.js` 里的 `site` 字段是唯一需要改的地方。
+Hub 只做**选型、学习路径、主题索引与跨站搜索**，不复制正文。各教程仍然独立仓库、独立部署、独立版本。
+
+> 站点链接默认假设各教程仓库已开启 GitHub Pages。如果某个链接 404，先到对应仓库的 README 确认 Pages 状态；`hub/assets/data.js` 里的 `site` 字段是唯一需要改的地方。
 
 ## 本地看站
 
@@ -23,7 +25,7 @@ python -m http.server 8080
 
 ## 更新搜索索引
 
-Hub 的搜索索引从五套教程各自的 `nav.js` 生成。默认假设五个仓库是同级目录：
+Hub 的搜索索引从教程库各自的 `nav.js` 生成。默认假设各教程仓库是同级目录：
 
 ```text
 aidemo/
@@ -51,14 +53,14 @@ node tools/check-site.cjs
 
 ```text
 hub/
-├── index.html          首页：五套教程、路径、速查
+├── index.html          首页：教程库、路径、速查
 ├── compare.html        框架对照与选型
 ├── topics.html         主题地图
-├── projects.html       五个收口项目与 samples
+├── projects.html       收口项目与 samples
 ├── about.html          版本、来源与维护边界
 ├── 404.html
 └── assets/
-    ├── data.js         五套教程、路径、主题、项目数据
+    ├── data.js         教程库、路径、主题、项目数据
     ├── search-index.js 跨站搜索索引（生成）
     ├── hub.css         深色 charcoal + lime 主题
     └── hub.js          渲染、搜索、主题切换

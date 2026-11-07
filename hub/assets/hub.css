@@ -237,5 +237,7 @@ td code, p code, li code { background: var(--panel-2); border: 1px solid var(--l
 .support-card p { margin: 0; color: var(--muted); font-size: 12px; }
 .support-note { color: var(--muted); font-size: 14px; margin-top: 16px; text-align: center; }
 .support-note a { color: var(--accent); }
+.sponsor-use { max-width: 620px; margin: 18px auto 0; padding-left: 20px; color: var(--muted); font-size: 14px; line-height: 2; }
+.sponsor-use li::marker { color: var(--accent); }
 @media (max-width: 700px) { .support-grid { grid-template-columns: 1fr; } }
 

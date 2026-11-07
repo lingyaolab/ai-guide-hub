@@ -2,11 +2,11 @@
 
 ## v1.2.0 — 2026-11-07
 
-默认白天模式，并补上关于页的感谢支持区。
+默认白天模式，并补上关于页的赞助区。
 
 - Hub 新访客默认使用 light 主题；已有偏好仍可切换并保存。
-- 关于页新增「感谢支持」：GitHub 地址、微信 / 支付宝赞赏码位置。
-- 赞赏码图片放到 `hub/assets/support-wechat.png` / `support-alipay.png` 后，
+- 关于页新增「赞助教程」：GitHub 地址、微信 / 支付宝赞助码位置。
+- 赞助码图片放到 `hub/assets/support-wechat.png` / `support-alipay.png` 后，
   构建会自动替换占位图。
 - 聚合构建与站内路径保持一致。
 

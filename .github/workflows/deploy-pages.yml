@@ -1,8 +1,6 @@
 name: Deploy site
 
-# 发布物：hub/（纯静态，零构建）
-# 首次使用：仓库 Settings → Pages → Source 选择 GitHub Actions
-
+# 发布物：dist/（构建时把 Hub + 五套教程聚合到同一域名下）
 on:
   push:
     branches: [main]
@@ -29,11 +27,11 @@ jobs:
         with:
           node-version: 20
 
-      - name: Rebuild search index
-        run: node tools/build-search-index.cjs
-
-      - name: Static checks
+      - name: Static checks (Hub source)
         run: node tools/check-site.cjs --quiet
+
+      - name: Build aggregate site
+        run: node tools/build-site.cjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -41,7 +39,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: hub
+          path: dist
 
   deploy:
     needs: build

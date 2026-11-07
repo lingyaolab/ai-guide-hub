@@ -17,11 +17,29 @@ Hub 只做**选型、学习路径、主题索引与跨站搜索**，不复制正
 ## 本地看站
 
 ```bash
-python -m http.server 8080
-# http://localhost:8080/hub/
+node tools/build-site.cjs --local
+python -m http.server 8104 --directory dist
+# http://localhost:8104/
 ```
 
-也可以直接双击 `hub/index.html`。
+`--local` 读取同级目录里的五套教程；默认不带参数时会从 GitHub 拉取固定 commit 到 `.cache/`，适合 CI。
+
+## 聚合构建（推荐）
+
+最终发布物不是 `hub/`，而是 `dist/`：
+
+```bash
+node tools/build-site.cjs
+```
+
+它会：
+
+1. 拉取五套教程的固定 commit；
+2. 把 Hub 放到 `/`，教程分别放到 `/spring-ai/`、`/langchain4j/`、`/agentscope-py/`、`/agentscope-java/`、`/langgraph/`；
+3. 把 `data.js` 与搜索索引改写成站内路径；
+4. 给每个教程页注入「← 教程库」、广告位和公共样式。
+
+把 `dist/` 上传到阿里云 OSS / 任意静态服务器即可。详见 `DEPLOY.md`。
 
 ## 更新搜索索引
 
@@ -63,12 +81,21 @@ hub/
     ├── data.js         教程库、路径、主题、项目数据
     ├── search-index.js 跨站搜索索引（生成）
     ├── hub.css         深色 charcoal + lime 主题
+    ├── hub-embed.css   注入教程页的返回链接/广告位样式
+    ├── ads.js          广告位占位（默认关闭）
     └── hub.js          渲染、搜索、主题切换
+
+tools/
+├── build-site.cjs      聚合构建：拉源码 → dist/ + 注入公共层
+├── build-search-index.cjs  单独更新 Hub 源站搜索索引
+└── check-site.cjs      源站静态检查
+
+dist/                   最终发布物（不入库）
 ```
 
 ## 设计原则
 
-1. **不复制正文**：避免五个站内容漂移。
-2. **固定外部 URL**：Hub 只链接各站 Pages / GitHub。
-3. **横切主题**：同一能力可以横向比较，但每条学习路径仍然纵向阅读。
-4. **零构建**：纯静态、无 CDN、无后端；只有生成搜索索引时用 Node。
+1. **不复制正文**：Hub 只放入口与索引，教程正文仍以各自仓库为准。
+2. **构建时聚合**：CI 拉取固定 commit，组装成 `dist/`，不在源码里留五份副本。
+3. **子路径部署**：一个域名、一份备案、一套广告脚本。
+4. **保留教程主题**：不重写五套教程的视觉；只在构建时注入公共返回链接与广告位。

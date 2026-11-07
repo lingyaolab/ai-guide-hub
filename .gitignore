@@ -7,3 +7,6 @@ target/
 *.iml
 .env
 .DS_Store
+
+dist/
+.cache/

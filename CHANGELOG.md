@@ -1,5 +1,16 @@
 # 更新记录
 
+## v1.1.0 — 2026-11-07
+
+聚合构建：一个域名、一份部署。
+
+- 新增 `tools/build-site.cjs`：从 GitHub 拉取五套教程的固定 commit，组装为 `dist/`。
+- 子路径：`/spring-ai/`、`/langchain4j/`、`/agentscope-py/`、`/agentscope-java/`、`/langgraph/`。
+- 构建时自动改写 `data.js` 和搜索索引为站内路径。
+- 给每个教程页注入「← 教程库」、广告位与公共样式。
+- 新增 `hub/assets/hub-embed.css`、`hub/assets/ads.js`。
+- 部署文档改为阿里云 OSS + CDN 为主，GitHub Pages 仅预览。
+
 ## v1.0.0 — 2026-11-07
 
 首个版本：教程库的统一入口。

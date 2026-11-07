@@ -19,16 +19,16 @@
   // theme
   var root = document.documentElement;
   try {
-    var saved = localStorage.getItem("hub-theme");
+    var saved = localStorage.getItem("hub-theme-v2");
     if (saved) root.setAttribute("data-theme", saved);
-    else root.setAttribute("data-theme", "dark");
+    else root.setAttribute("data-theme", "light");
   } catch (e) {}
   var themeBtn = document.getElementById("theme-toggle");
   if (themeBtn) {
     themeBtn.addEventListener("click", function () {
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
       root.setAttribute("data-theme", next);
-      try { localStorage.setItem("hub-theme", next); } catch (e) {}
+      try { localStorage.setItem("hub-theme-v2", next); } catch (e) {}
       themeBtn.setAttribute("aria-pressed", next === "dark" ? "true" : "false");
     });
   }

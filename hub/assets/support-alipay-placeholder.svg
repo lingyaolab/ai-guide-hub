@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 520" role="img" aria-label="支付宝赞赏码">
+  <defs>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1677ff"/>
+      <stop offset="1" stop-color="#0b5bd3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="520" rx="24" fill="url(#b)"/>
+  <text x="200" y="78" text-anchor="middle" fill="#ffffff" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="34" font-weight="700">支付宝赞赏</text>
+  <rect x="58" y="120" width="284" height="284" rx="18" fill="#ffffff" opacity="0.96"/>
+  <g stroke="#1677ff" stroke-width="5" fill="none" stroke-dasharray="12 10">
+    <rect x="86" y="148" width="228" height="228" rx="12"/>
+  </g>
+  <text x="200" y="252" text-anchor="middle" fill="#0a2d66" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="700">赞赏码</text>
+  <text x="200" y="284" text-anchor="middle" fill="#43638f" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14">扫码支持</text>
+  <text x="200" y="462" text-anchor="middle" fill="#eaf2ff" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="16">感谢支持，完全自愿</text>
+</svg>

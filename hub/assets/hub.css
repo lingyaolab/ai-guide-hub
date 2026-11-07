@@ -229,3 +229,13 @@ td code, p code, li code { background: var(--panel-2); border: 1px solid var(--l
 }
 
 .section-head h1 { margin: 0; font-size: 32px; letter-spacing: -0.03em; }
+
+.support-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.support-card { border: 1px solid var(--line); background: var(--panel); border-radius: var(--radius); padding: 14px; text-align: center; }
+.support-card img { display: block; width: 100%; max-width: 260px; margin: 0 auto 12px; border-radius: 12px; }
+.support-card h3 { margin: 0 0 2px; font-size: 16px; }
+.support-card p { margin: 0; color: var(--muted); font-size: 12px; }
+.support-note { color: var(--muted); font-size: 14px; margin-top: 16px; text-align: center; }
+.support-note a { color: var(--accent); }
+@media (max-width: 700px) { .support-grid { grid-template-columns: 1fr; } }
+

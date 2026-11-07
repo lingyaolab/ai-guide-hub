@@ -26,6 +26,8 @@ python -m http.server 8104 --directory dist
 
 `--local` 读取同级目录里的五套教程；默认不带参数时会从 GitHub 拉取固定 commit 到 `.cache/`，适合 CI。
 
+把两张收款码保存为 `hub/assets/support-wechat.png` 与 `hub/assets/support-alipay.png`，构建时会自动替换占位图。
+
 ## 聚合构建（推荐）
 
 最终发布物不是 `hub/`，而是 `dist/`：

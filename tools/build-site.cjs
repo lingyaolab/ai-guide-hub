@@ -131,6 +131,19 @@ function buildSearch(mounts) {
   return entries.length;
 }
 
+function swapSupportImages() {
+  const file = path.join(DIST, "about.html");
+  if (!fs.existsSync(file)) return;
+  let s = fs.readFileSync(file, "utf8");
+  for (const kind of ["wechat", "alipay"]) {
+    const real = "assets/support-" + kind + ".png";
+    if (fs.existsSync(path.join(DIST, real))) {
+      s = s.split("assets/support-" + kind + "-placeholder.svg").join(real);
+    }
+  }
+  fs.writeFileSync(file, s, "utf8");
+}
+
 function injectCommon(g) {
   const root = path.join(DIST, g.id);
   let count = 0;
@@ -180,6 +193,7 @@ for (const g of GUIDES) {
 
 buildData(mounts);
 const total = buildSearch(mounts);
+swapSupportImages();
 let injected = 0;
 for (const g of mounts) injected += injectCommon(g);
 

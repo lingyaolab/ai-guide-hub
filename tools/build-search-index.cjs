@@ -9,27 +9,27 @@ const OUT = path.join(HUB, "hub", "assets", "search-index.js");
 const GUIDES = [
   {
     id: "springai",
-    site: "https://lingyaolab.github.io/springai-guide/",
+    site: "/spring-ai/",
     nav: "../../springai-guide/spring-ai-learn/assets/nav.js",
   },
   {
     id: "langchain4j",
-    site: "https://lingyaolab.github.io/langchain4j-guide/",
+    site: "/langchain4j/",
     nav: "../../langchain4j-guide/langchain4j-learn/assets/nav.js",
   },
   {
     id: "agentscope-py",
-    site: "https://lingyaolab.github.io/agentscope-py-guide/",
+    site: "/agentscope-py/",
     nav: "../../agentscope-py-guide/agentscope-py-learn/assets/nav.js",
   },
   {
     id: "agentscope-java",
-    site: "https://lingyaolab.github.io/agentscope-guide/",
+    site: "/agentscope-java/",
     nav: "../../agentscope-guide/agentscope-java-learn/assets/nav.js",
   },
   {
     id: "langgraph",
-    site: "https://lingyaolab.github.io/langgraph-guide/",
+    site: "/langgraph/",
     nav: "../../langgraph-guide/langgraph-learn/assets/nav.js",
   },
 ];

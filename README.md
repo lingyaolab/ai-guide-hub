@@ -22,6 +22,8 @@ python -m http.server 8104 --directory dist
 # http://localhost:8104/
 ```
 
+注意：不要直接打开 `hub/index.html` 当完整站点。`hub/` 只是 Hub 源壳，教程链接按 `/spring-ai/` 等站内路径解析；完整预览必须走 `dist/`。
+
 `--local` 读取同级目录里的五套教程；默认不带参数时会从 GitHub 拉取固定 commit 到 `.cache/`，适合 CI。
 
 ## 聚合构建（推荐）

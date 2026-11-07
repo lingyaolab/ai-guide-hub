@@ -136,8 +136,9 @@ function swapSupportImages() {
   if (!fs.existsSync(file)) return;
   let s = fs.readFileSync(file, "utf8");
   for (const kind of ["wechat", "alipay"]) {
-    const real = "assets/support-" + kind + ".png";
-    if (fs.existsSync(path.join(DIST, real))) {
+    const candidates = ["png", "jpg", "jpeg"].map((ext) => "assets/support-" + kind + "." + ext);
+    const real = candidates.find((p) => fs.existsSync(path.join(DIST, p)));
+    if (real) {
       s = s.split("assets/support-" + kind + "-placeholder.svg").join(real);
     }
   }

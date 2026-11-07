@@ -56,8 +56,8 @@ hub/
 ├── index.html          首页：教程库、路径、速查
 ├── compare.html        框架对照与选型
 ├── topics.html         主题地图
-├── projects.html       收口项目与 samples
-├── about.html          版本、来源与维护边界
+├── projects.html       完整项目与 samples
+├── about.html          版本、来源与阅读方式
 ├── 404.html
 └── assets/
     ├── data.js         教程库、路径、主题、项目数据

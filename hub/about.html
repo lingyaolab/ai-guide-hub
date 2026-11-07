@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="AI Guide Hub 的版本矩阵、源码对齐原则、五个独立仓库与维护边界。" />
+    <meta name="description" content="AI Guide Hub 的教程范围、版本矩阵、源码对齐原则与阅读方式。" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_CN" />
     <meta property="og:site_name" content="AI Guide Hub" />
-    <meta property="og:title" content="关于：版本、来源与维护方式 · AI Guide Hub" />
-    <meta property="og:description" content="AI Guide Hub 的版本矩阵、源码对齐原则、五个独立仓库与维护边界。" />
-    <title>关于：版本、来源与维护方式 · AI Guide Hub</title>
+    <meta property="og:title" content="关于：版本、来源与阅读方式 · AI Guide Hub" />
+    <meta property="og:description" content="AI Guide Hub 的教程范围、版本矩阵、源码对齐原则与阅读方式。" />
+    <title>关于：版本、来源与阅读方式 · AI Guide Hub</title>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
     <link rel="stylesheet" href="assets/hub.css" />
   </head>
@@ -37,19 +37,18 @@
     </header>
     <main id="main">
       <section class="section">
-        <div class="section-head"><h1>关于这个 Hub</h1><p>只做导航、选型与索引，不复制正文。</p></div>
+        <div class="section-head"><h1>关于 AI Guide Hub</h1><p>一个面向 AI 应用开发者的教程导航站。</p></div>
         <div class="callout">
-          <b>维护原则：</b>教程库各自在自己的仓库里独立版本、独立部署；Hub 通过固定 URL 链接过去。
-          任何一套更新，不需要动另外四套。
+          <b>这里的教程怎么组织：</b>每套都按「先跑通、再拆解、再练习」编排；
+          每篇尽量标源码出处，示例可以单独运行，最后落到一个完整项目。
         </div>
         <p style="color:var(--muted);font-size:14px;margin-top:14px">
-          如果某个教程链接 404，通常是该仓库还没开启 GitHub Pages；先看对应仓库的 README，
-          或改 <code>hub/assets/data.js</code> 里的 <code>site</code> 字段。
+          如果某个教程链接打不开，可能是该教程正在部署，稍后再试。
         </p>
       </section>
 
       <section class="section">
-        <div class="section-head"><h2>版本矩阵</h2><p>页面里的版本号跟随各自主仓库。</p></div>
+        <div class="section-head"><h2>版本矩阵</h2><p>当前收录的版本；升级后这里会同步更新。</p></div>
         <div class="table-wrap">
           <table>
             <thead><tr><th>教程</th><th>版本</th><th>语言</th><th>仓库</th></tr></thead>
@@ -65,19 +64,19 @@
       </section>
 
       <section class="section">
-        <div class="section-head"><h2>来源与边界</h2><p>所有教程都强调「回到源码」。</p></div>
+        <div class="section-head"><h2>来源与边界</h2><p>每条结论尽量回到源码。</p></div>
         <ul style="color:var(--muted);font-size:14px;line-height:2">
           <li>页面上的数字、默认值、抛错点尽量带 <code>file:line</code> 出处。</li>
-          <li>版本固定在各自的主版本；升级时先跑对应仓库的 <code>check-sources</code> 与 samples。</li>
-          <li>Hub 的跨站搜索索引由各仓库的 <code>nav.js</code> 生成，不抓取正文。</li>
-          <li>如果某个链接失效，先看对应仓库的 README 与部署状态。</li>
+          <li>每套教程都有可运行 samples；离线测试不需要 API Key。</li>
+          <li>搜索覆盖章节与小节标题，点开直接到对应教程。</li>
+          <li>版本升级时，先跑对应教程的出处校验与 samples。</li>
         </ul>
       </section>
 
     </main>
     <footer class="site-footer">
       <div class="footer-inner">
-        <span>AI Guide Hub · 各教程独立部署</span>
+        <span>AI 应用开发教程导航 · 从选型到项目</span>
         <span>
           <a href="https://github.com/lingyaolab">lingyaolab</a> ·
           <a href="about.html">版本与来源</a>

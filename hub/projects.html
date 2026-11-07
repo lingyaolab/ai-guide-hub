@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="五套教程的收口项目、章节入口与配套 samples 的运行方式。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="AI Guide Hub" />
+    <meta property="og:title" content="项目：五个可运行案例与 samples · AI Guide Hub" />
+    <meta property="og:description" content="五套教程的收口项目、章节入口与配套 samples 的运行方式。" />
+    <title>项目：五个可运行案例与 samples · AI Guide Hub</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/hub.css" />
+  </head>
+  <body data-page="projects">
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">AI</span>
+          <span>Guide Hub<br /><small>五套源码对齐的 AI 开发教程</small></span>
+        </a>
+        <nav class="nav" id="site-nav" aria-label="主导航">
+          <a data-nav="home" href="index.html">首页</a>
+          <a data-nav="compare" href="compare.html">框架对照</a>
+          <a data-nav="topics" href="topics.html">主题地图</a>
+          <a data-nav="projects" href="projects.html">项目</a>
+          <a data-nav="about" href="about.html">关于</a>
+        </nav>
+        <div class="header-tools">
+          <button class="icon-btn" id="search-open" type="button" aria-label="搜索" title="搜索（/）">⌕</button>
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+          <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="菜单" aria-controls="site-nav" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section class="section">
+        <div class="section-head">
+          <h1>五个收口项目</h1>
+          <p>每个都能从章节一路走到可运行 samples。</p>
+        </div>
+        <div class="project-list" id="project-list"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>samples 怎么跑</h2><p>Python 用 venv，Java 用 JDK 17 + Maven。</p></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>教程</th><th>目录</th><th>离线测试</th><th>真实模型</th></tr></thead>
+            <tbody>
+              <tr><td>Spring AI</td><td><code>samples/</code></td><td><code>mvn test</code></td><td><code>mvn spring-boot:run</code></td></tr>
+              <tr><td>LangChain4j</td><td><code>samples/</code></td><td><code>mvn test</code></td><td><code>mvn exec:java</code></td></tr>
+              <tr><td>AgentScope Python</td><td><code>samples/</code></td><td><code>pytest</code></td><td><code>python -m as_samples.s00_live_smoke</code></td></tr>
+              <tr><td>AgentScope Java</td><td><code>samples/</code></td><td><code>mvn test</code></td><td><code>mvn exec:java</code></td></tr>
+              <tr><td>LangGraph</td><td><code>samples/</code></td><td><code>pytest</code></td><td><code>python -m lg_samples.s00_live_smoke</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="color:var(--muted);font-size:14px;margin-top:14px">
+          所有 samples 的 <code>.env</code> 与构建产物都被忽略；真实模型默认不参与测试。
+        </p>
+      </section>
+
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>AI Guide Hub · 五套教程，各自独立部署</span>
+        <span>
+          <a href="https://github.com/lingyaolab">lingyaolab</a> ·
+          <a href="about.html">版本与来源</a>
+        </span>
+      </div>
+    </footer>
+    <div class="search-wrap" id="search-wrap" aria-hidden="true">
+      <div class="search-box" role="dialog" aria-modal="true" aria-label="跨站搜索">
+        <input id="search-input" type="search" placeholder="搜索章节、概念或框架，例如 checkpoint / HITL / RAG" autocomplete="off" />
+        <div class="search-results" id="search-results"></div>
+        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:var(--faint);font-size:12px">
+          <span>Enter 打开第一个结果 · Esc 关闭</span>
+          <button class="icon-btn" id="search-close" type="button" aria-label="关闭搜索">×</button>
+        </div>
+      </div>
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/search-index.js"></script>
+    <script src="assets/hub.js"></script>
+  </body>
+</html>

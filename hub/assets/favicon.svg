@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI Guide Hub">
+  <rect width="64" height="64" rx="14" fill="#0b0d10"/>
+  <circle cx="16" cy="18" r="4" fill="#a3e635"/>
+  <circle cx="16" cy="32" r="4" fill="#67e8f9"/>
+  <circle cx="16" cy="46" r="4" fill="#fda4af"/>
+  <path d="M22 18h10l8 14h8M22 32h18M22 46h10l8-14" fill="none" stroke="#f3f6f9" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

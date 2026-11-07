@@ -1,0 +1,141 @@
+window.HUB_GUIDES = [
+  {
+    id: "springai",
+    name: "Spring AI",
+    title: "Spring AI 2.0.2",
+    lang: "Java",
+    version: "2.0.2",
+    accent: "#86efac",
+    site: "https://lingyaolab.github.io/springai-guide/",
+    repo: "https://github.com/lingyaolab/springai-guide",
+    tagline: "Spring 生态里的 ChatClient、Advisor、RAG 与 MCP",
+    bestFor: "已有 Spring Boot 服务，想在熟悉的装配体系里接模型、工具与知识库。",
+    chapters: "00–16 章 + 00A + 附录 A–F",
+    samples: "Maven + JDK 17；离线 Stub 测试，真实 DeepSeek 冒烟已跑通",
+  },
+  {
+    id: "langchain4j",
+    name: "LangChain4j",
+    title: "LangChain4j 1.23.0",
+    lang: "Java",
+    version: "1.23.0",
+    accent: "#5eead4",
+    site: "https://lingyaolab.github.io/langchain4j-guide/",
+    repo: "https://github.com/lingyaolab/langchain4j-guide",
+    tagline: "纯 Java 库：ChatModel、AI Service、工具、RAG 与 Agent",
+    bestFor: "不想绑定 Spring，希望用显式组件控制调用链、RAG 与工具循环。",
+    chapters: "00–15 章 + 00A + 附录 A–F",
+    samples: "Maven + JDK 17；ChatModel / AI Service / Tool 三个示例",
+  },
+  {
+    id: "agentscope-py",
+    name: "AgentScope Python",
+    title: "AgentScope Python 2.0.11",
+    lang: "Python",
+    version: "2.0.11",
+    accent: "#c084fc",
+    site: "https://lingyaolab.github.io/agentscope-py-guide/",
+    repo: "https://github.com/lingyaolab/agentscope-py-guide",
+    tagline: "多智能体、服务化、HITL 与实时语音的 Python 全栈",
+    bestFor: "要做多 Agent 协作、Agent Service、SSE 与语音，且希望 Python 生态。",
+    chapters: "00–26 章 + 00A + 附录 A–G",
+    samples: "Python 3.11+；Agent、Tool、Middleware、AgentState、Service",
+  },
+  {
+    id: "agentscope-java",
+    name: "AgentScope Java",
+    title: "AgentScope Java 2.0.4",
+    lang: "Java",
+    version: "2.0.4",
+    accent: "#7dd3fc",
+    site: "https://lingyaolab.github.io/agentscope-guide/",
+    repo: "https://github.com/lingyaolab/agentscope-guide",
+    tagline: "Reactor 驱动的 Agent 运行时，覆盖 Harness 与企业服务",
+    bestFor: "Java 团队要做 Agent 平台、Workspace、沙箱、团队协作与生产运维。",
+    chapters: "00–36 章 + 00A + 36A + 附录 A–G",
+    samples: "Maven + JDK 17；ReActAgent + OpenAIChatModel + Toolkit",
+  },
+  {
+    id: "langgraph",
+    name: "LangGraph",
+    title: "LangGraph 1.2.20",
+    lang: "Python",
+    version: "1.2.20",
+    accent: "#fda4af",
+    site: "https://lingyaolab.github.io/langgraph-guide/",
+    repo: "https://github.com/lingyaolab/langgraph-guide",
+    tagline: "状态图运行时：checkpoint、interrupt、子图与可恢复执行",
+    bestFor: "流程需要显式状态、暂停恢复、时间旅行或多 Agent 编排。",
+    chapters: "00–27 章 + 00A + 附录 A–E",
+    samples: "Python 3.11+；StateGraph、Send、checkpoint、HITL、SSE",
+  },
+];
+
+window.HUB_PATHS = [
+  {
+    title: "Java 企业路线",
+    note: "从 Spring 服务到 Agent 平台",
+    steps: ["springai", "langchain4j", "agentscope-java"],
+  },
+  {
+    title: "Python Agent 路线",
+    note: "从单 Agent 到多智能体服务",
+    steps: ["agentscope-py", "langgraph"],
+  },
+  {
+    title: "运行时与编排路线",
+    note: "先理解状态、恢复与控制流",
+    steps: ["langgraph", "agentscope-py", "agentscope-java"],
+  },
+];
+
+window.HUB_TOPICS = [
+  {
+    title: "第一次对话",
+    desc: "从模型、Prompt 到第一个可运行回复。",
+    links: [["springai", "02"], ["langchain4j", "02"], ["agentscope-py", "02"], ["agentscope-java", "02"], ["langgraph", "01"]],
+  },
+  {
+    title: "工具调用",
+    desc: "工具 schema、审批、循环与错误回传。",
+    links: [["springai", "10"], ["langchain4j", "06"], ["agentscope-py", "05"], ["agentscope-java", "06"], ["langgraph", "11"]],
+  },
+  {
+    title: "RAG 与知识库",
+    desc: "切分、向量化、检索、重排与引用。",
+    links: [["springai", "07"], ["langchain4j", "08"], ["agentscope-py", "11"], ["agentscope-java", "32"], ["langgraph", "24"]],
+  },
+  {
+    title: "记忆与上下文",
+    desc: "短期窗口、长期 Store、压缩与恢复。",
+    links: [["springai", "05"], ["langchain4j", "07"], ["agentscope-py", "06"], ["agentscope-java", "15"], ["langgraph", "13"]],
+  },
+  {
+    title: "Human-in-the-loop",
+    desc: "暂停、确认、恢复与副作用幂等。",
+    links: [["agentscope-py", "08"], ["agentscope-java", "08"], ["langgraph", "07"]],
+  },
+  {
+    title: "多 Agent",
+    desc: "路由、交接、团队、任务板与成本。",
+    links: [["langchain4j", "10"], ["agentscope-py", "17"], ["agentscope-java", "24"], ["langgraph", "14"]],
+  },
+  {
+    title: "服务化",
+    desc: "HTTP、SSE、会话、鉴权与多租户。",
+    links: [["springai", "15"], ["agentscope-py", "15"], ["agentscope-java", "19"], ["langgraph", "16"]],
+  },
+  {
+    title: "生产与评测",
+    desc: "超时、重试、限流、成本、回归集与观测。",
+    links: [["springai", "14"], ["langchain4j", "13"], ["agentscope-py", "23"], ["agentscope-java", "26"], ["langgraph", "15"]],
+  },
+];
+
+window.HUB_PROJECTS = [
+  { guide: "springai", title: "知识库问答服务", chapter: "15", desc: "DeepSeek + pgvector + Advisor + 工具 + SSE，含 compose 与三层测试。" },
+  { guide: "langchain4j", title: "知识库 + 工具 + 流式", chapter: "14", desc: "完整客服服务：入库、检索、工具、记忆、SSE、测试与部署。" },
+  { guide: "agentscope-py", title: "Atlas 团队知识助手", chapter: "26", desc: "多租户、知识库、共享、渠道、追踪、评测与 Java 对照。" },
+  { guide: "agentscope-java", title: "Notes Agent", chapter: "11", desc: "工具、状态、权限确认与流式事件，core 版的完整可运行案例。" },
+  { guide: "langgraph", title: "知识库客服", chapter: "17", desc: "RAG + HITL + 多 Agent + checkpoint + Postgres 的完整案例。" },
+];

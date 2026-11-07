@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL、服务化与选型问题。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:site_name" content="AI Guide Hub" />
+    <meta property="og:title" content="框架对照：五套教程怎么选 · AI Guide Hub" />
+    <meta property="og:description" content="Spring AI、LangChain4j、AgentScope Python/Java 与 LangGraph 的定位、状态、工具、RAG、HITL、服务化与选型问题。" />
+    <title>框架对照：五套教程怎么选 · AI Guide Hub</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="assets/hub.css" />
+  </head>
+  <body data-page="compare">
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">AI</span>
+          <span>Guide Hub<br /><small>五套源码对齐的 AI 开发教程</small></span>
+        </a>
+        <nav class="nav" id="site-nav" aria-label="主导航">
+          <a data-nav="home" href="index.html">首页</a>
+          <a data-nav="compare" href="compare.html">框架对照</a>
+          <a data-nav="topics" href="topics.html">主题地图</a>
+          <a data-nav="projects" href="projects.html">项目</a>
+          <a data-nav="about" href="about.html">关于</a>
+        </nav>
+        <div class="header-tools">
+          <button class="icon-btn" id="search-open" type="button" aria-label="搜索" title="搜索（/）">⌕</button>
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="切换主题" title="切换主题">◐</button>
+          <button class="icon-btn menu-btn" id="menu-toggle" type="button" aria-label="菜单" aria-controls="site-nav" aria-expanded="false">☰</button>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <section class="section">
+        <div class="section-head">
+          <h1>框架对照</h1>
+          <p>先看「你的项目缺哪一层」，再看品牌。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>维度</th><th>Spring AI</th><th>LangChain4j</th><th>AgentScope Python</th><th>AgentScope Java</th><th>LangGraph</th></tr></thead>
+            <tbody>
+              <tr><td><b>语言</b></td><td>Java</td><td>Java</td><td>Python</td><td>Java</td><td>Python</td></tr>
+              <tr><td><b>版本</b></td><td>2.0.2</td><td>1.23.0</td><td>2.0.11</td><td>2.0.4</td><td>1.2.20</td></tr>
+              <tr><td><b>定位</b></td><td>Spring 生态的 AI 装配层</td><td>框架无关的 Java AI 库</td><td>多智能体与服务化全栈</td><td>Reactor 驱动的 Agent 运行时</td><td>状态图与可恢复执行运行时</td></tr>
+              <tr><td><b>核心抽象</b></td><td>ChatClient / Advisor</td><td>ChatModel / AI Service</td><td>Agent / Toolkit / Service</td><td>ReActAgent / Harness / Service</td><td>StateGraph / Pregel</td></tr>
+              <tr><td><b>状态与恢复</b></td><td>ChatMemory / 外部存储</td><td>ChatMemory / 自定义</td><td>AgentState / Session</td><td>AgentStateStore / Session</td><td>Checkpointer / thread_id</td></tr>
+              <tr><td><b>工具</b></td><td><code>@Tool</code> + ToolCallingAdvisor</td><td><code>@Tool</code> + AI Service</td><td>FunctionTool / Toolkit / MCP</td><td><code>@Tool</code> / Toolkit / MCP</td><td>ToolNode + bind_tools</td></tr>
+              <tr><td><b>RAG</b></td><td>Advisor + VectorStore</td><td>ContentRetriever / EmbeddingStore</td><td>Knowledge / Memory</td><td>Knowledge / RAG 扩展</td><td>自定义检索节点 / 工具</td></tr>
+              <tr><td><b>HITL</b></td><td>确认流程 / 自定义</td><td>工具审批 / 自定义</td><td>Permission + HITL</td><td>Permission + Confirmation</td><td>interrupt / Command(resume)</td></tr>
+              <tr><td><b>服务化</b></td><td>Spring Boot Web</td><td>自带 Web 无关</td><td>Agent Service / SSE</td><td>Agent Service / Gateway</td><td>LangGraph Server / FastAPI</td></tr>
+              <tr><td><b>最适合</b></td><td>已有 Spring 服务</td><td>需要细粒度控制</td><td>Python 多 Agent 产品</td><td>Java Agent 平台</td><td>需要暂停恢复的流程</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h2>三个选型问题</h2><p>答完基本就知道先看哪套。</p></div>
+        <div class="path-grid">
+          <article class="path-card">
+            <h3>1. 你的服务已经在 Spring 里吗？</h3>
+            <div class="path-note">是 → 先看 Spring AI；不是 → 继续下一问。</div>
+            <p style="color:var(--muted);font-size:14px">Spring AI 的优势是自动装配与 Advisor；代价是框架绑定。</p>
+          </article>
+          <article class="path-card">
+            <h3>2. 你需要显式状态与暂停恢复吗？</h3>
+            <div class="path-note">是 → LangGraph 或 AgentScope 的 Session/State；不是 → 普通 Chain/Agent 就够。</div>
+            <p style="color:var(--muted);font-size:14px">只要工具循环时，不要为了「图」而图。</p>
+          </article>
+          <article class="path-card">
+            <h3>3. 你是 Java 团队还是 Python 团队？</h3>
+            <div class="path-note">Java 平台 → AgentScope Java；Python 多 Agent → AgentScope Python。</div>
+            <p style="color:var(--muted);font-size:14px">语言之外，还要看部署、观测与团队已有运维体系。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="callout">
+          <b>不要按「功能最多」选。</b>
+          先写清楚你需要的是 ChatClient、工具循环、RAG、状态恢复还是服务托管；
+          再把需求映射到上表的那一行。五套教程都可以互相借鉴，但不要同时引入五套运行时。
+        </div>
+      </section>
+
+    </main>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span>AI Guide Hub · 五套教程，各自独立部署</span>
+        <span>
+          <a href="https://github.com/lingyaolab">lingyaolab</a> ·
+          <a href="about.html">版本与来源</a>
+        </span>
+      </div>
+    </footer>
+    <div class="search-wrap" id="search-wrap" aria-hidden="true">
+      <div class="search-box" role="dialog" aria-modal="true" aria-label="跨站搜索">
+        <input id="search-input" type="search" placeholder="搜索章节、概念或框架，例如 checkpoint / HITL / RAG" autocomplete="off" />
+        <div class="search-results" id="search-results"></div>
+        <div style="display:flex;justify-content:space-between;gap:10px;margin-top:8px;color:var(--faint);font-size:12px">
+          <span>Enter 打开第一个结果 · Esc 关闭</span>
+          <button class="icon-btn" id="search-close" type="button" aria-label="关闭搜索">×</button>
+        </div>
+      </div>
+    </div>
+    <script src="assets/data.js"></script>
+    <script src="assets/search-index.js"></script>
+    <script src="assets/hub.js"></script>
+  </body>
+</html>
